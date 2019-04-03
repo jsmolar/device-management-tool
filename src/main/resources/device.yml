@@ -1,0 +1,24 @@
+- activeDevice:
+    device:
+      className: "io.patriot_framework.generator.basicDevices.Lala"
+      dataFeed:
+        className: "io.patriot_framework.generator.dataFeed.NormalDistributionDataFeed"
+        mu: 2
+        sigma: 1
+#      networkAdapter:
+#        type: "rest"
+#        endpoint: "chujovina"
+    timeFeed:
+      className: "io.patriot_framework.generator.dataFeed.ConstantDataFeed"
+      timer: 2000
+
+- activeDevice:
+    device:
+      className: "io.patriot_framework.generator.basicDevices.Lala"
+      dataFeed:
+        className: "io.patriot_framework.generator.dataFeed.NormalDistributionDataFeed"
+        mu: 2
+        sigma: 1
+    timeFeed:
+      className: "io.patriot_framework.generator.dataFeed.ConstantDataFeed"
+      timer: 2000
