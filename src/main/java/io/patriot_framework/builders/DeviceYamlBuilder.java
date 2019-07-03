@@ -21,17 +21,33 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
 import io.patriot_framework.beans.ActiveDeviceBean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
+
+@RestController
 public class DeviceYamlBuilder {
 
     private List<ActiveDeviceBean> activeDeviceBeans;
 
     private String fileName = "device.yml";
+
+    @RequestMapping(value = "/devices", method = RequestMethod.GET)
+    public String allDevices() {
+        String response = "List of all running devices: ";
+
+//        for (ActiveDeviceBean device : activeDeviceBeans) {
+//            response = response + " " + device.getDevice().getDevice().getLabel() + ",";
+//        }
+
+        return response;
+    }
 
     public DeviceYamlBuilder loadDevices() throws IOException {
         YAMLFactory yamlFactory = new YAMLFactory();
@@ -49,7 +65,7 @@ public class DeviceYamlBuilder {
 
     public void startActiveDevices() {
         for(ActiveDeviceBean device : activeDeviceBeans) {
-            device.getDevice().startSimulation();
+            device.getDevice().start();
         }
     }
 
