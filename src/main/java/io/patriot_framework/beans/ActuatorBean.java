@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Patriot project
+ * Copyright 2020 Patriot project
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -16,25 +16,5 @@
 
 package io.patriot_framework.beans;
 
-import io.patriot_framework.generator.device.active.ActiveDevice;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class ActiveDeviceBean {
-
-    private List<ActiveDevice> activeDevices = new ArrayList<>();
-
-    public void startSimulationAll() {
-        activeDevices.forEach(ActiveDevice::start);
-    }
-
-    public List<ActiveDevice> getActiveDevices() {
-        return activeDevices;
-    }
-
-    public void setActiveDevices(List<ActiveDevice> activeDevices) {
-        this.activeDevices = activeDevices;
-    }
-
+public class ActuatorBean {
 }

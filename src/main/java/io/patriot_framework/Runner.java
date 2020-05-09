@@ -16,20 +16,29 @@
 
 package io.patriot_framework;
 
+import io.patriot_framework.beans.RunnableBean;
 import io.patriot_framework.builders.DeviceYamlBuilder;
 
 import java.io.IOException;
 
 public class Runner {
 
-    public static void main(String args[]) {
-        DeviceYamlBuilder builder = new DeviceYamlBuilder();
+    public static void main(String[] args) {
+        RunnableBean runnableBean = new RunnableBean();
 
-        try {
-            builder.loadDevices().startActiveDevices();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (args.length > 0) {
+            String jsonPath = args[0];
+            DeviceYamlBuilder builder = new DeviceYamlBuilder(runnableBean, jsonPath);
+
+            try {
+                builder.loadDevices();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            builder.getRunnableBean().getActiveDeviceBean().startSimulationAll();
         }
+
 
         System.out.println("aaa");
     }
