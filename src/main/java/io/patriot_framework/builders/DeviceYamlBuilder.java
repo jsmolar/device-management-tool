@@ -16,42 +16,53 @@
 
 package io.patriot_framework.builders;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
 import io.patriot_framework.beans.ActiveDeviceBean;
+import io.patriot_framework.beans.RunnableBean;
+import io.patriot_framework.beans.SensorBean;
 
-import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
 
 public class DeviceYamlBuilder {
 
-    private List<ActiveDeviceBean> activeDeviceBeans;
+    private RunnableBean runnableBean;
 
-    private String fileName = "device.yml";
+    private String fileName;
+
+    public DeviceYamlBuilder(RunnableBean runnableBean, String fileName) {
+        this.runnableBean = runnableBean;
+        this.fileName = fileName;
+    }
 
     public DeviceYamlBuilder loadDevices() throws IOException {
-        YAMLFactory yamlFactory = new YAMLFactory();
-        yamlFactory.disable(YAMLGenerator.Feature.USE_NATIVE_TYPE_ID);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        ObjectMapper mapper = new ObjectMapper(yamlFactory);
+        try(FileReader fr = new FileReader(fileName)) {
+            runnableBean.setActiveDeviceBean(
+                    mapper.readValue(fr, ActiveDeviceBean.class));
 
-        ClassLoader classLoader = this.getClass().getClassLoader();
-        File loadedFile = new File(classLoader.getResource(fileName).getFile());
-
-        activeDeviceBeans = mapper.readValue(loadedFile, new TypeReference<List<ActiveDeviceBean>>(){});
+//            runnableBean.setSensorBean(
+//                    mapper.readValue(fr, SensorBean.class));
+        }
 
         return this;
     }
 
-    public void startActiveDevices() {
-        for(ActiveDeviceBean device : activeDeviceBeans) {
-            device.getDevice().startSimulation();
-        }
+    public RunnableBean getRunnableBean() {
+        return runnableBean;
     }
-
-
 }
+
+//   TypeReference<ActiveDeviceBean>(){}
+//        SimpleModule module = new SimpleModule("CustomModel", Version.unknownVersion());
+//        SimpleAbstractTypeResolver resolver = new SimpleAbstractTypeResolver();
+//        resolver.addMapping(ActiveDevice.class, AbstractActiveDevice.class);
+//        module.setAbstractTypes(resolver);
+//        mapper.registerModule(module);
+
+
+//        YAMLFactory yamlFactory = new YAMLFactory();
+//        yamlFactory.disable(YAMLGenerator.Feature.USE_NATIVE_TYPE_ID);

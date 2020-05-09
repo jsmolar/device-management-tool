@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="data-generator-management-tool" />
+        <module name="device-management-tool" />
         <module name="project-template" />
       </profile>
     </annotationProcessing>

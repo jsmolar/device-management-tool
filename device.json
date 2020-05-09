@@ -1,0 +1,50 @@
+{
+    "activeDevices": [
+        {
+            "device": {
+                "className": "io.patriot_framework.generator.device.impl.basicDevices.Hygrometer",
+                "networkAdapter": {
+                    "type": "rest",
+                    "endpoint": "http://requestbin.net/r/1ii5fbd1",
+                    "wrapper": {
+                        "type": "json"
+                    }
+                },
+                "dataFeed": {
+                    "className": "io.patriot_framework.generator.dataFeed.NormalDistributionDataFeed",
+                    "mu": 2,
+                    "sigma": 1
+                }
+            },
+            "timeFeed": {
+                "className": "io.patriot_framework.generator.dataFeed.ConstantDataFeed",
+                "timer": 2000
+            }
+        },
+        {
+            "device": {
+                "className": "io.patriot_framework.generator.device.impl.basicDevices.Hygrometer",
+                "dataFeed": {
+                    "className": "io.patriot_framework.generator.dataFeed.NormalDistributionDataFeed",
+                    "mu": 2,
+                    "sigma": 1
+                }
+            },
+            "timeFeed": {
+                "className": "io.patriot_framework.generator.dataFeed.ConstantDataFeed",
+                "timer": 2000
+            }
+        }
+    ],
+
+    "sensors": [
+        {
+            "className": "io.patriot_framework.generator.device.impl.basicDevices.Hygrometer",
+            "dataFeed": {
+                "className": "io.patriot_framework.generator.dataFeed.NormalDistributionDataFeed",
+                "mu": 2,
+                "sigma": 1
+            }
+        }
+    ]
+}
