@@ -16,5 +16,26 @@
 
 package io.patriot_framework.beans;
 
-public class ActuatorBean {
+import io.patriot_framework.generator.device.passive.actuators.Actuator;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ActuatorBean implements CoAPServer{
+
+    List<Actuator> actuators = new ArrayList<>();
+
+    @Override
+    public void registerToCoAPAll() {
+        actuators.forEach(Actuator::registerToCoapServer);
+    }
+
+    public List<Actuator> getActuators() {
+        return actuators;
+    }
+
+    public void setActuators(List<Actuator> actuators) {
+        this.actuators = actuators;
+    }
+
 }

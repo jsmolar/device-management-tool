@@ -1,8 +1,9 @@
 {
-    "activeDevices": [
+    "active": [
         {
             "device": {
                 "className": "io.patriot_framework.generator.device.impl.basicDevices.Hygrometer",
+                "label": "activeHygrometer",
                 "networkAdapter": {
                     "type": "rest",
                     "endpoint": "http://requestbin.net/r/1ii5fbd1",
@@ -11,28 +12,29 @@
                     }
                 },
                 "dataFeed": {
-                    "className": "io.patriot_framework.generator.dataFeed.NormalDistributionDataFeed",
+                    "className": "io.patriot_framework.generator.dataFeed.NormalDistVariateDataFeed",
                     "mu": 2,
                     "sigma": 1
                 }
             },
             "timeFeed": {
                 "className": "io.patriot_framework.generator.dataFeed.ConstantDataFeed",
-                "timer": 2000
+                "constant": 2000
             }
         },
         {
             "device": {
-                "className": "io.patriot_framework.generator.device.impl.basicDevices.Hygrometer",
+                "className": "io.patriot_framework.generator.device.impl.basicDevices.Thermometer",
+                "label": "activeThermometer",
                 "dataFeed": {
-                    "className": "io.patriot_framework.generator.dataFeed.NormalDistributionDataFeed",
+                    "className": "io.patriot_framework.generator.dataFeed.NormalDistVariateDataFeed",
                     "mu": 2,
                     "sigma": 1
                 }
             },
             "timeFeed": {
                 "className": "io.patriot_framework.generator.dataFeed.ConstantDataFeed",
-                "timer": 2000
+                "constant": 2000
             }
         }
     ],
@@ -40,11 +42,19 @@
     "sensors": [
         {
             "className": "io.patriot_framework.generator.device.impl.basicDevices.Hygrometer",
+            "label": "passiveHygrometer",
             "dataFeed": {
-                "className": "io.patriot_framework.generator.dataFeed.NormalDistributionDataFeed",
-                "mu": 2,
-                "sigma": 1
+                "className": "io.patriot_framework.generator.dataFeed.ExponentialDistDataFeed",
+                "lambda": 300
             }
+        }
+    ],
+
+    "actuators": [
+        {
+            "className": "io.patriot_framework.generator.device.impl.basicActuators.LinearActuator",
+            "label": "testActuator",
+            "duration": 2000
         }
     ]
 }

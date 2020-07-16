@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Patriot project
+ * Copyright 2020 Patriot project
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,33 +14,37 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework;
+package io.patriot_framework.example;
 
 import io.patriot_framework.beans.RunnableBean;
 import io.patriot_framework.builders.DeviceYamlBuilder;
 
 import java.io.IOException;
 
-public class Runner {
+/**
+ * The definition of StateMachines via yml builder is not supported
+ */
+public class ExampleYAMLBuilder {
 
-    public static void main(String[] args) {
+    public static final String DEFAULT_PATH = "device.yml";
+
+    public static void deviceBuilder(String path, String httpEndpoint) throws InterruptedException {
         RunnableBean runnableBean = new RunnableBean();
 
-        if (args.length > 0) {
-            String jsonPath = args[0];
-            DeviceYamlBuilder builder = new DeviceYamlBuilder(runnableBean, jsonPath);
+        path = path.isEmpty() ? DEFAULT_PATH : path;
 
-            try {
-                builder.loadDevices();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        DeviceYamlBuilder builder = new DeviceYamlBuilder(runnableBean, path);
 
-            builder.getRunnableBean().getActiveDeviceBean().startSimulationAll();
+        try {
+            builder.loadDevices();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
+        builder.getRunnableBean().getActiveDeviceBean().startSimulationAll();
+        builder.getRunnableBean().registerAllDevices();
+        Thread.sleep(10000);
 
-        System.out.println("aaa");
     }
 
 }

@@ -18,11 +18,17 @@ package io.patriot_framework.beans;
 
 public class RunnableBean {
 
-    ActiveDeviceBean activeDeviceBean = new ActiveDeviceBean();
+    private ActiveDeviceBean activeDeviceBean = new ActiveDeviceBean();
 
-    SensorBean sensorBean = new SensorBean();
+    private SensorBean sensorBean = new SensorBean();
 
-    ActuatorBean actuatorBean = new ActuatorBean();
+    private ActuatorBean actuatorBean = new ActuatorBean();
+
+    public void registerAllDevices() {
+        activeDeviceBean.registerToCoAPAll();
+        sensorBean.registerToCoAPAll();
+        actuatorBean.registerToCoAPAll();
+    }
 
     public ActiveDeviceBean getActiveDeviceBean() {
         return activeDeviceBean;

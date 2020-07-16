@@ -36,89 +36,6 @@
       </license>
    </licenses>
 
-   <developers>
-      <developer>
-         <id>obabec</id>
-         <email>ond.babec@gmail.com</email>
-         <organization>Red Hat</organization>
-         <name>Ondřej Babec</name>
-         <roles>
-            <role>developer</role>
-         </roles>
-         <timezone>Europe/Prague</timezone>
-      </developer>
-      <developer>
-         <id>sbunciak</id>
-         <email>sbunciak@redhat.com</email>
-         <organization>Red Hat</organization>
-         <name>Štefan Bunčiak</name>
-         <roles>
-            <role>Project manager</role>
-         </roles>
-         <timezone>Europe/Prague</timezone>
-      </developer>
-      <developer>
-         <id>mbures</id>
-         <email>miroslav.bures@fel.cvut.cz</email>
-         <organization>FEL CVUT</organization>
-         <name>Miroslav Bureš</name>
-         <roles>
-            <role>Product owner</role>
-         </roles>
-         <timezone>Europe/Prague</timezone>
-      </developer>
-      <developer>
-         <id>ficap</id>
-         <email>ficap@redhat.com</email>
-         <organization>Red Hat</organization>
-         <name>Filip Čáp</name>
-         <roles>
-            <role>Developer</role>
-         </roles>
-         <timezone>Europe/Prague</timezone>
-      </developer>
-      <developer>
-         <id>mijaros</id>
-         <email>mjaros@redhat.com</email>
-         <organization>Red Hat</organization>
-         <name>Mirek Jaroš</name>
-         <roles>
-            <role>Tech lead</role>
-         </roles>
-         <timezone>Europe/Prague</timezone>
-      </developer>
-      <developer>
-         <id>pmacik</id>
-         <email>pmacik@redhat.com</email>
-         <organization>Red Hat</organization>
-         <name>Pavel Macík</name>
-         <roles>
-            <role>Tech lead</role>
-         </roles>
-         <timezone>Europe/Prague</timezone>
-      </developer>
-      <developer>
-         <id>jpechane</id>
-         <email>jpechane@redhat.com</email>
-         <organization>Red Hat</organization>
-         <name>Jiří Pechanec</name>
-         <roles>
-            <role>The guru</role>
-         </roles>
-         <timezone>Europe/Prague</timezone>
-      </developer>
-      <developer>
-	 <id>jsmolar</id>
-         <email>jsmolar@redhat.com</email>
-         <organization>Red Hat</organization>
-	 <name>Jakub Smol�r</name>
-	 <roles>
-	    <role>Developer</role>
-   	 </roles>
-         <timezone>Europe/Prague</timezone>	 
-      </developer>
-   </developers>
-
    <properties>
       <org.junit.platform.version>1.2.0</org.junit.platform.version>
       <org.junit.jupiter.version>5.2.0</org.junit.jupiter.version>
@@ -128,89 +45,59 @@
 
    <build>
       <plugins>
-          <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.7.0</version>
-          <configuration>
-              <source>1.8</source>
-              <target>1.8</target>
-          </configuration>
-        </plugin>
-          <plugin>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>${maven-surefire-plugin.version}</version>
-            <dependencies>
-               <dependency>
-                  <groupId>org.junit.platform</groupId>
-                  <artifactId>junit-platform-surefire-provider</artifactId>
-                  <version>${org.junit.platform.version}</version>
-               </dependency>
-               <dependency>
-                  <groupId>org.junit.jupiter</groupId>
-                  <artifactId>junit-jupiter-engine</artifactId>
-                  <version>${org.junit.jupiter.version}</version>
-               </dependency>
-            </dependencies>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.7.0</version>
+            <configuration>
+               <source>11</source>
+               <target>11</target>
+            </configuration>
          </plugin>
+
          <plugin>
             <!-- Build an executable JAR -->
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
-            <version>3.1.0</version>
+            <version>3.2.0</version>
             <configuration>
                <archive>
                   <manifest>
                      <addClasspath>true</addClasspath>
                      <classpathPrefix>lib/</classpathPrefix>
-                     <mainClass>io.patriot_framework.Runner</mainClass>
+                     <mainClass>io.patriot_framework.example.DeviceExample</mainClass>
                   </manifest>
                </archive>
             </configuration>
          </plugin>
          <plugin>
             <artifactId>maven-assembly-plugin</artifactId>
-            <configuration>
-               <archive>
-                  <manifest>
-                     <mainClass>io.patriot_framework.Runner</mainClass>
-                  </manifest>
-               </archive>
-               <descriptorRefs>
-                  <descriptorRef>jar-with-dependencies</descriptorRef>
-               </descriptorRefs>
-            </configuration>
+            <executions>
+               <execution>
+                  <id>jar-with-dependencies</id>
+                  <phase>package</phase>
+                  <goals>
+                     <goal>single</goal>
+                  </goals>
+                  <configuration>
+                     <archive>
+                        <manifest>
+                           <mainClass>io.patriot_framework.example.DeviceExample</mainClass>
+                        </manifest>
+                     </archive>
+                     <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                     </descriptorRefs>
+                     <finalName>dmt-example</finalName>
+                     <appendAssemblyId>false</appendAssemblyId>
+                  </configuration>
+               </execution>
+            </executions>
          </plugin>
-         <!--<plugin>-->
-            <!--<groupId>org.apache.maven.plugins</groupId>-->
-            <!--<artifactId>maven-checkstyle-plugin</artifactId>-->
-            <!--<version>3.0.0</version>-->
-            <!--<executions>-->
-                <!--<execution>-->
-                    <!--<id>validate</id>-->
-                    <!--<phase>validate</phase>-->
-                    <!--<configuration>-->
-                        <!--<configLocation>checkstyle.xml</configLocation>-->
-                       <!--<encoding>UTF-8</encoding>-->
-                       <!--<consoleOutput>true</consoleOutput>-->
-                       <!--<failsOnError>true</failsOnError>-->
-                   <!--</configuration>-->
-                   <!--<goals>-->
-                       <!--<goal>check</goal>-->
-                   <!--</goals>-->
-               <!--</execution>-->
-           <!--</executions>-->
-         <!--</plugin>-->
       </plugins>
    </build>
 
    <dependencies>
-      <dependency>
-         <groupId>org.junit.jupiter</groupId>
-         <artifactId>junit-jupiter-api</artifactId>
-         <version>${org.junit.jupiter.version}</version>
-         <scope>test</scope>
-      </dependency>
       <dependency>
          <groupId>com.fasterxml.jackson.core</groupId>
          <artifactId>jackson-databind</artifactId>
@@ -224,9 +111,7 @@
       <dependency>
          <groupId>io.patriot-framework</groupId>
          <artifactId>generator</artifactId>
-         <version>2.0.1-SNAPSHOT</version>
-<!--         <scope>system</scope>-->
-<!--         <systemPath>/home/jsmolar/RedHat/data-generator-example/target/generator-2.0.1-SNAPSHOT.jar</systemPath>&ndash;&gt;-->
+         <version>1.0-THESIS</version>
       </dependency>
    </dependencies>
 

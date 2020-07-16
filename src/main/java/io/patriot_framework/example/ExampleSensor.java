@@ -14,27 +14,24 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.beans;
+package io.patriot_framework.example;
 
+import io.patriot_framework.generator.dataFeed.DataFeed;
+import io.patriot_framework.generator.dataFeed.ExponentialDistDataFeed;
+import io.patriot_framework.generator.dataFeed.NormalDistVariateDataFeed;
+import io.patriot_framework.generator.device.impl.basicDevices.DHT11;
 import io.patriot_framework.generator.device.passive.sensors.Sensor;
 
-import java.util.ArrayList;
-import java.util.List;
+public class ExampleSensor {
 
-public class SensorBean implements CoAPServer {
+    public static void sensor(String httpEndpoint) {
+        DataFeed temperature = new ExponentialDistDataFeed(0.02);
+        DataFeed humidity = new NormalDistVariateDataFeed(30, 7);
+        Sensor sensor = new DHT11("dht11", temperature, humidity);
 
-    private List<Sensor> sensors = new ArrayList<>();
-
-    @Override
-    public void registerToCoAPAll() {
-        sensors.forEach(Sensor::registerToCoapServer);
+        for (int i = 0; i < 10; i++) {
+            sensor.requestData((double) i);
+        }
     }
 
-    public List<Sensor> getSensors() {
-        return sensors;
-    }
-
-    public void setSensors(List<Sensor> sensors) {
-        this.sensors = sensors;
-    }
 }

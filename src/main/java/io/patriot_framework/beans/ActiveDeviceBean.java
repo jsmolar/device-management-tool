@@ -21,20 +21,23 @@ import io.patriot_framework.generator.device.active.ActiveDevice;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActiveDeviceBean {
+public class ActiveDeviceBean implements CoAPServer{
 
-    private List<ActiveDevice> activeDevices = new ArrayList<>();
+    private List<ActiveDevice> active = new ArrayList<>();
 
     public void startSimulationAll() {
-        activeDevices.forEach(ActiveDevice::start);
+        active.forEach(ActiveDevice::start);
     }
 
-    public List<ActiveDevice> getActiveDevices() {
-        return activeDevices;
+    public void registerToCoAPAll() {
+        active.forEach(i -> i.getDevice().registerToCoapServer());
     }
 
-    public void setActiveDevices(List<ActiveDevice> activeDevices) {
-        this.activeDevices = activeDevices;
+    public List<ActiveDevice> getActive() {
+        return active;
     }
 
+    public void setActive(List<ActiveDevice> active) {
+        this.active = active;
+    }
 }

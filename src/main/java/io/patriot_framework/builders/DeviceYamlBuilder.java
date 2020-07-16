@@ -19,9 +19,11 @@ package io.patriot_framework.builders;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.patriot_framework.beans.ActiveDeviceBean;
+import io.patriot_framework.beans.ActuatorBean;
 import io.patriot_framework.beans.RunnableBean;
 import io.patriot_framework.beans.SensorBean;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -40,13 +42,19 @@ public class DeviceYamlBuilder {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        try(FileReader fr = new FileReader(fileName)) {
-            runnableBean.setActiveDeviceBean(
-                    mapper.readValue(fr, ActiveDeviceBean.class));
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        File file = new File(fileName);
 
-//            runnableBean.setSensorBean(
-//                    mapper.readValue(fr, SensorBean.class));
-        }
+//        try(FileReader fr = new FileReader(fileName)) {
+            runnableBean.setActiveDeviceBean(
+                    mapper.readValue(file, ActiveDeviceBean.class));
+
+            runnableBean.setSensorBean(
+                    mapper.readValue(file, SensorBean.class));
+
+            runnableBean.setActuatorBean(
+                mapper.readValue(file, ActuatorBean.class));
+//        }
 
         return this;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Patriot project
+ * Copyright 2020 Patriot project
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,38 +14,10 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework;
+package io.patriot_framework.beans;
 
-/**
- * Simple counter file
- */
-public class SampleCounter {
+public interface CoAPServer {
 
-    private int count;
+    void registerToCoAPAll();
 
-    SampleCounter() {
-        this.count = 0;
-    }
-
-    /**
-     * Get current value
-     * @return current value
-     */
-    public int getCount() {
-        return this.count;
-    }
-
-    /**
-     * Increments current value by one
-     */
-    public void increment() {
-        this.count++;
-    }
-
-    /**
-     * Decrements current value by one
-     */
-    public void decrement() {
-        this.count--;
-    }
 }
