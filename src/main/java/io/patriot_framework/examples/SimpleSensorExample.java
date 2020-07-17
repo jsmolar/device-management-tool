@@ -18,7 +18,7 @@ package io.patriot_framework.examples;
 
 import io.patriot_framework.generator.dataFeed.DataFeed;
 import io.patriot_framework.generator.dataFeed.NormalDistVariateDataFeed;
-import io.patriot_framework.generator.device.impl.basicDevices.Thermometer;
+import io.patriot_framework.generator.device.impl.basicSensors.Thermometer;
 import io.patriot_framework.generator.device.passive.sensors.SimpleSensor;
 import io.patriot_framework.generator.network.NetworkAdapter;
 import io.patriot_framework.generator.network.Rest;

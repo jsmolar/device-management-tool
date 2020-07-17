@@ -2,7 +2,7 @@
     "active": [
         {
             "device": {
-                "className": "io.patriot_framework.generator.device.impl.basicDevices.Hygrometer",
+                "className": "io.patriot_framework.generator.device.impl.basicSensors.Hygrometer",
                 "label": "activeHygrometer",
                 "networkAdapter": {
                     "type": "rest",
@@ -24,7 +24,7 @@
         },
         {
             "device": {
-                "className": "io.patriot_framework.generator.device.impl.basicDevices.Thermometer",
+                "className": "io.patriot_framework.generator.device.impl.basicSensors.Thermometer",
                 "label": "activeThermometer",
                 "dataFeed": {
                     "className": "io.patriot_framework.generator.dataFeed.NormalDistVariateDataFeed",
@@ -41,7 +41,7 @@
 
     "sensors": [
         {
-            "className": "io.patriot_framework.generator.device.impl.basicDevices.Hygrometer",
+            "className": "io.patriot_framework.generator.device.impl.basicSensors.Hygrometer",
             "label": "passiveHygrometer",
             "dataFeed": {
                 "className": "io.patriot_framework.generator.dataFeed.ExponentialDistDataFeed",

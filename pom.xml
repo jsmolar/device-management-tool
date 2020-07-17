@@ -85,27 +85,39 @@
          </plugin>
          <plugin>
             <artifactId>maven-assembly-plugin</artifactId>
-            <executions>
-               <execution>
-                  <id>jar-with-dependencies</id>
-                  <phase>package</phase>
-                  <goals>
-                     <goal>single</goal>
-                  </goals>
-                  <configuration>
-                     <archive>
-                        <manifest>
-                           <mainClass>io.patriot_framework.examples.DeviceExample</mainClass>
-                        </manifest>
-                     </archive>
-                     <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                     </descriptorRefs>
-                     <finalName>dmt-example</finalName>
-                     <appendAssemblyId>false</appendAssemblyId>
-                  </configuration>
-               </execution>
-            </executions>
+            <!--            <executions>-->
+            <!--               <execution>-->
+            <!--                  <id>jar-with-dependencies</id>-->
+            <!--                  <phase>package</phase>-->
+            <!--                  <goals>-->
+            <!--                     <goal>single</goal>-->
+            <!--                  </goals>-->
+            <!--                  <configuration>-->
+            <!--                     <archive>-->
+            <!--                        <manifest>-->
+            <!--                           <mainClass>io.patriot_framework.examples.DeviceExample</mainClass>-->
+            <!--                        </manifest>-->
+            <!--                     </archive>-->
+            <!--                     <descriptorRefs>-->
+            <!--                        <descriptorRef>jar-with-dependencies</descriptorRef>-->
+            <!--                     </descriptorRefs>-->
+            <!--                     <finalName>dmt-example</finalName>-->
+            <!--                     <appendAssemblyId>false</appendAssemblyId>-->
+            <!--                  </configuration>-->
+            <!--               </execution>-->
+            <!--            </executions>-->
+            <configuration>
+               <archive>
+                  <manifest>
+                     <mainClass>io.patriot_framework.examples.DeviceExample</mainClass>
+                  </manifest>
+               </archive>
+               <descriptorRefs>
+                  <descriptorRef>jar-with-dependencies</descriptorRef>
+               </descriptorRefs>
+               <finalName>dmt-example</finalName>
+               <appendAssemblyId>false</appendAssemblyId>
+            </configuration>
          </plugin>
       </plugins>
    </build>

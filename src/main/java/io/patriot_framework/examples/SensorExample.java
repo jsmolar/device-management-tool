@@ -19,7 +19,7 @@ package io.patriot_framework.examples;
 import io.patriot_framework.generator.dataFeed.DataFeed;
 import io.patriot_framework.generator.dataFeed.ExponentialDistDataFeed;
 import io.patriot_framework.generator.dataFeed.NormalDistVariateDataFeed;
-import io.patriot_framework.generator.device.impl.basicDevices.DHT11;
+import io.patriot_framework.generator.device.impl.basicSensors.DHT11;
 import io.patriot_framework.generator.device.passive.sensors.Sensor;
 
 public class SensorExample {

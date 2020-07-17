@@ -21,7 +21,7 @@ import io.patriot_framework.generator.dataFeed.DataFeed;
 import io.patriot_framework.generator.dataFeed.NormalDistVariateDataFeed;
 import io.patriot_framework.generator.device.active.Active;
 import io.patriot_framework.generator.device.active.ActiveDevice;
-import io.patriot_framework.generator.device.impl.basicDevices.Thermometer;
+import io.patriot_framework.generator.device.impl.basicSensors.Thermometer;
 import io.patriot_framework.generator.device.passive.sensors.SimpleSensor;
 
 public class ActiveDeviceExample {
