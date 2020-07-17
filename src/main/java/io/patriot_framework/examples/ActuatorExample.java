@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.example;
+package io.patriot_framework.examples;
 
 import io.patriot_framework.generator.controll.client.CoapControlClient;
 import io.patriot_framework.generator.device.impl.basicActuators.RotaryActuator;
@@ -23,7 +23,7 @@ import org.eclipse.californium.elements.exception.ConnectorException;
 
 import java.io.IOException;
 
-public class ExampleActuator {
+public class ActuatorExample {
 
     public static void actuator(String httpEndpoint) throws ConnectorException, IOException, InterruptedException {
 

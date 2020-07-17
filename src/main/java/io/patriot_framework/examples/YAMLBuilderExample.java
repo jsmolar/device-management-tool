@@ -14,17 +14,17 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.example;
+package io.patriot_framework.examples;
 
 import io.patriot_framework.beans.RunnableBean;
-import io.patriot_framework.builders.DeviceYamlBuilder;
+import io.patriot_framework.builders.DeviceJsonBuilder;
 
 import java.io.IOException;
 
 /**
  * The definition of StateMachines via yml builder is not supported
  */
-public class ExampleYAMLBuilder {
+public class YAMLBuilderExample {
 
     public static final String DEFAULT_PATH = "device.yml";
 
@@ -33,7 +33,7 @@ public class ExampleYAMLBuilder {
 
         path = path.isEmpty() ? DEFAULT_PATH : path;
 
-        DeviceYamlBuilder builder = new DeviceYamlBuilder(runnableBean, path);
+        DeviceJsonBuilder builder = new DeviceJsonBuilder(runnableBean, path);
 
         try {
             builder.loadDevices();

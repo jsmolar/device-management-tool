@@ -14,29 +14,29 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.example;
+package io.patriot_framework.examples;
 
 import org.eclipse.californium.elements.exception.ConnectorException;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-import static io.patriot_framework.example.ExampleActiveDevice.activeDevice;
-import static io.patriot_framework.example.ExampleActuator.actuator;
-import static io.patriot_framework.example.ExampleSensor.sensor;
-import static io.patriot_framework.example.ExampleSimpleSensor.simpleSensor;
-import static io.patriot_framework.example.ExampleYAMLBuilder.deviceBuilder;
+import static io.patriot_framework.examples.ActiveDeviceExample.activeDevice;
+import static io.patriot_framework.examples.ActuatorExample.actuator;
+import static io.patriot_framework.examples.SensorExample.sensor;
+import static io.patriot_framework.examples.SimpleSensorExample.simpleSensor;
+import static io.patriot_framework.examples.YAMLBuilderExample.deviceBuilder;
 
 public class DeviceExample {
 
     public static void main(String... args) throws ConnectorException, InterruptedException, IOException {
 
         String help = "On few simple examples, this project will \n"
-                + "1 Sensor example \n"
-                + "2 SimpleSensor example \n"
-                + "3 Actuator example \n"
-                + "4 ActiveDevice example \n"
-                + "5 import from yml file example \n"
+                + "1 Sensor examples \n"
+                + "2 SimpleSensor examples \n"
+                + "3 Actuator examples \n"
+                + "4 ActiveDevice examples \n"
+                + "5 import from yml file examples \n"
                 + "9 to configure DTM with new http endpoint or yml file for deserialization\n"
                 + "0 to exit \n"
                 + "type 1, 2, 3, 4 or 5 to run examples \n";

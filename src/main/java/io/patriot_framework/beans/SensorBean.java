@@ -37,4 +37,5 @@ public class SensorBean implements CoAPServer {
     public void setSensors(List<Sensor> sensors) {
         this.sensors = sensors;
     }
+
 }

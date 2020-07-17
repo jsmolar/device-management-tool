@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.example;
+package io.patriot_framework.examples;
 
 import io.patriot_framework.generator.dataFeed.DataFeed;
 import io.patriot_framework.generator.dataFeed.ExponentialDistDataFeed;
@@ -22,7 +22,7 @@ import io.patriot_framework.generator.dataFeed.NormalDistVariateDataFeed;
 import io.patriot_framework.generator.device.impl.basicDevices.DHT11;
 import io.patriot_framework.generator.device.passive.sensors.Sensor;
 
-public class ExampleSensor {
+public class SensorExample {
 
     public static void sensor(String httpEndpoint) {
         DataFeed temperature = new ExponentialDistDataFeed(0.02);

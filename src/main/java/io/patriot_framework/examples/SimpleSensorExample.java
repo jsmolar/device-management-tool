@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.example;
+package io.patriot_framework.examples;
 
 import io.patriot_framework.generator.dataFeed.DataFeed;
 import io.patriot_framework.generator.dataFeed.NormalDistVariateDataFeed;
@@ -24,7 +24,7 @@ import io.patriot_framework.generator.network.NetworkAdapter;
 import io.patriot_framework.generator.network.Rest;
 import io.patriot_framework.generator.network.wrappers.JSONWrapper;
 
-public class ExampleSimpleSensor {
+public class SimpleSensorExample {
 
     public static void simpleSensor(String httpEndpoint) throws InterruptedException {
         DataFeed df = new NormalDistVariateDataFeed(18, 2);

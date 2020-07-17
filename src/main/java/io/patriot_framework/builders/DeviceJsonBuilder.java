@@ -24,53 +24,36 @@ import io.patriot_framework.beans.RunnableBean;
 import io.patriot_framework.beans.SensorBean;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 
-public class DeviceYamlBuilder {
+public class DeviceJsonBuilder {
 
     private RunnableBean runnableBean;
 
     private String fileName;
 
-    public DeviceYamlBuilder(RunnableBean runnableBean, String fileName) {
+    public DeviceJsonBuilder(RunnableBean runnableBean, String fileName) {
         this.runnableBean = runnableBean;
         this.fileName = fileName;
     }
 
-    public DeviceYamlBuilder loadDevices() throws IOException {
+    public void loadDevices() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         File file = new File(fileName);
 
-//        try(FileReader fr = new FileReader(fileName)) {
-            runnableBean.setActiveDeviceBean(
-                    mapper.readValue(file, ActiveDeviceBean.class));
+        runnableBean.setActiveDeviceBean(
+                mapper.readValue(file, ActiveDeviceBean.class));
 
-            runnableBean.setSensorBean(
-                    mapper.readValue(file, SensorBean.class));
+        runnableBean.setSensorBean(
+                mapper.readValue(file, SensorBean.class));
 
-            runnableBean.setActuatorBean(
+        runnableBean.setActuatorBean(
                 mapper.readValue(file, ActuatorBean.class));
-//        }
-
-        return this;
     }
 
     public RunnableBean getRunnableBean() {
         return runnableBean;
     }
 }
-
-//   TypeReference<ActiveDeviceBean>(){}
-//        SimpleModule module = new SimpleModule("CustomModel", Version.unknownVersion());
-//        SimpleAbstractTypeResolver resolver = new SimpleAbstractTypeResolver();
-//        resolver.addMapping(ActiveDevice.class, AbstractActiveDevice.class);
-//        module.setAbstractTypes(resolver);
-//        mapper.registerModule(module);
-
-
-//        YAMLFactory yamlFactory = new YAMLFactory();
-//        yamlFactory.disable(YAMLGenerator.Feature.USE_NATIVE_TYPE_ID);

@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.example;
+package io.patriot_framework.examples;
 
 import io.patriot_framework.generator.dataFeed.ConstantDataFeed;
 import io.patriot_framework.generator.dataFeed.DataFeed;
@@ -24,7 +24,7 @@ import io.patriot_framework.generator.device.active.ActiveDevice;
 import io.patriot_framework.generator.device.impl.basicDevices.Thermometer;
 import io.patriot_framework.generator.device.passive.sensors.SimpleSensor;
 
-public class ExampleActiveDevice {
+public class ActiveDeviceExample {
 
     public static void activeDevice(String httpEndpoint) throws InterruptedException {
         DataFeed df = new NormalDistVariateDataFeed(18, 2);

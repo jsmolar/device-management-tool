@@ -37,10 +37,7 @@
    </licenses>
 
    <properties>
-      <org.junit.platform.version>1.2.0</org.junit.platform.version>
-      <org.junit.jupiter.version>5.2.0</org.junit.jupiter.version>
-      <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-      <org.java-docker.version>3.1.0-rc-3</org.java-docker.version>
+      <org.codehouse.mojo.version>1.6.0</org.codehouse.mojo.version>
    </properties>
 
    <build>
@@ -56,6 +53,22 @@
          </plugin>
 
          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>${org.codehouse.mojo.version}</version>
+            <executions>
+               <execution>
+                  <goals>
+                     <goal>java</goal>
+                  </goals>
+               </execution>
+            </executions>
+            <configuration>
+               <mainClass>io.patriot_framework.examples.DeviceExample</mainClass>
+               <cleanupDaemonThreads>false</cleanupDaemonThreads>
+            </configuration>
+         </plugin>
+         <plugin>
             <!-- Build an executable JAR -->
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
@@ -65,7 +78,7 @@
                   <manifest>
                      <addClasspath>true</addClasspath>
                      <classpathPrefix>lib/</classpathPrefix>
-                     <mainClass>io.patriot_framework.example.DeviceExample</mainClass>
+                     <mainClass>io.patriot_framework.examples.DeviceExample</mainClass>
                   </manifest>
                </archive>
             </configuration>
@@ -82,7 +95,7 @@
                   <configuration>
                      <archive>
                         <manifest>
-                           <mainClass>io.patriot_framework.example.DeviceExample</mainClass>
+                           <mainClass>io.patriot_framework.examples.DeviceExample</mainClass>
                         </manifest>
                      </archive>
                      <descriptorRefs>
