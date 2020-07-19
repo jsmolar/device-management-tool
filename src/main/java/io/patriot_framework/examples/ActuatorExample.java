@@ -33,7 +33,7 @@ public class ActuatorExample {
         CoapControlClient client = new CoapControlClient("coap://127.0.0.1:5683");
 
         for (int i = 0; i < 3; i++) {
-            client.post("/rotator", "rotate");
+            client.post("/actuator/rotator", "rotate");
             Thread.sleep(3500);
         }
 

@@ -6,7 +6,7 @@
                 "label": "activeHygrometer",
                 "networkAdapter": {
                     "type": "rest",
-                    "endpoint": "http://requestbin.net/r/1ii5fbd1",
+                    "endpoint": "https://enisg4fvfqevq.x.pipedream.net/",
                     "wrapper": {
                         "type": "json"
                     }

@@ -25,7 +25,7 @@ import static io.patriot_framework.examples.ActiveDeviceExample.activeDevice;
 import static io.patriot_framework.examples.ActuatorExample.actuator;
 import static io.patriot_framework.examples.SensorExample.sensor;
 import static io.patriot_framework.examples.SimpleSensorExample.simpleSensor;
-import static io.patriot_framework.examples.YAMLBuilderExample.deviceBuilder;
+import static io.patriot_framework.examples.JsonBuilderExample.deviceBuilder;
 
 public class DeviceExample {
 
@@ -46,7 +46,14 @@ public class DeviceExample {
          * Default values for yml file for deserialization and http endpoint
          */
         String jsonFile = "device.json";
-        String httpEndpoint = "https://requestbin.com/r/enisg4fvfqevq";
+
+        /*
+         * Example HTTP endpoint is on public requestbin:
+         * https://requestbin.com/r/enisg4fvfqevq/1efyNiKoKNYlP7Sk9C53OQrEwTM
+         *
+         * Feel free to change this.
+         */
+        String httpEndpoint = "https://enisg4fvfqevq.x.pipedream.net/";
 
         Scanner scanner = new Scanner(System.in);
 
@@ -68,7 +75,7 @@ public class DeviceExample {
                     activeDevice(httpEndpoint);
                     break;
                 case 5:
-                    deviceBuilder(jsonFile, httpEndpoint);
+                    deviceBuilder(jsonFile);
                     break;
                 case 9:
                     System.out.println("New http endpoint: ");

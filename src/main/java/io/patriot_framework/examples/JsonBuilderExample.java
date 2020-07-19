@@ -24,14 +24,10 @@ import java.io.IOException;
 /**
  * The definition of StateMachines via yml builder is not supported
  */
-public class YAMLBuilderExample {
+public class JsonBuilderExample {
 
-    public static final String DEFAULT_PATH = "device.yml";
-
-    public static void deviceBuilder(String path, String httpEndpoint) throws InterruptedException {
+    public static void deviceBuilder(String path) throws InterruptedException {
         RunnableBean runnableBean = new RunnableBean();
-
-        path = path.isEmpty() ? DEFAULT_PATH : path;
 
         DeviceJsonBuilder builder = new DeviceJsonBuilder(runnableBean, path);
 
@@ -43,7 +39,9 @@ public class YAMLBuilderExample {
 
         builder.getRunnableBean().getActiveDeviceBean().startSimulationAll();
         builder.getRunnableBean().registerAllDevices();
+
         Thread.sleep(10000);
+        builder.getRunnableBean().getActiveDeviceBean().stopSimulationAll();
 
     }
 

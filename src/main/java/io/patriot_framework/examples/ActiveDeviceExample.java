@@ -23,6 +23,9 @@ import io.patriot_framework.generator.device.active.Active;
 import io.patriot_framework.generator.device.active.ActiveDevice;
 import io.patriot_framework.generator.device.impl.basicSensors.Thermometer;
 import io.patriot_framework.generator.device.passive.sensors.SimpleSensor;
+import io.patriot_framework.generator.network.NetworkAdapter;
+import io.patriot_framework.generator.network.Rest;
+import io.patriot_framework.generator.network.wrappers.JSONWrapper;
 
 public class ActiveDeviceExample {
 
@@ -30,6 +33,8 @@ public class ActiveDeviceExample {
         DataFeed df = new NormalDistVariateDataFeed(18, 2);
         SimpleSensor temperature = new Thermometer("activeThermometer", df);
         temperature.registerToCoapServer();
+        NetworkAdapter na = new Rest(httpEndpoint, new JSONWrapper());
+        temperature.setNetworkAdapter(na);
 
         DataFeed tf = new ConstantDataFeed(2000);
         Active activeDevice = new ActiveDevice(temperature, tf);

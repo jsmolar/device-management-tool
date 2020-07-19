@@ -29,6 +29,10 @@ public class ActiveDeviceBean implements CoAPServer{
         active.forEach(ActiveDevice::start);
     }
 
+    public void stopSimulationAll() {
+        active.forEach(ActiveDevice::stop);
+    }
+
     public void registerToCoAPAll() {
         active.forEach(i -> i.getDevice().registerToCoapServer());
     }

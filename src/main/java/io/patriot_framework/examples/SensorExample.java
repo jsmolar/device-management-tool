@@ -21,6 +21,9 @@ import io.patriot_framework.generator.dataFeed.ExponentialDistDataFeed;
 import io.patriot_framework.generator.dataFeed.NormalDistVariateDataFeed;
 import io.patriot_framework.generator.device.impl.basicSensors.DHT11;
 import io.patriot_framework.generator.device.passive.sensors.Sensor;
+import io.patriot_framework.generator.network.NetworkAdapter;
+import io.patriot_framework.generator.network.Rest;
+import io.patriot_framework.generator.network.wrappers.JSONWrapper;
 
 public class SensorExample {
 
@@ -28,6 +31,8 @@ public class SensorExample {
         DataFeed temperature = new ExponentialDistDataFeed(0.02);
         DataFeed humidity = new NormalDistVariateDataFeed(30, 7);
         Sensor sensor = new DHT11("dht11", temperature, humidity);
+        NetworkAdapter na = new Rest(httpEndpoint, new JSONWrapper());
+        sensor.setNetworkAdapter(na);
 
         for (int i = 0; i < 10; i++) {
             sensor.requestData((double) i);

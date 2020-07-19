@@ -16,6 +16,11 @@
 
 package io.patriot_framework.beans;
 
+import io.patriot_framework.generator.device.Device;
+
+/**
+ * Interface provides method for {@link Device}-s expose their resources on CoAP server.
+ */
 public interface CoAPServer {
 
     void registerToCoAPAll();
